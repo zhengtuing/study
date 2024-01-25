@@ -48,3 +48,55 @@ Git 常用命令
    - 在查看远程分支之前，你可能需要先通过 `git fetch [remote-name]` 来获取最新的远程仓库数据。这个命令会下载远程仓库的最新信息，但不会自动合并或修改你当前的工作。
 3. **查看远程仓库详细信息**：
    - 使用 `git remote show [remote-name]`：这个命令会显示更详细的信息，包括每个分支的跟踪情况和是否需要合并。
+
+
+
++ ## git配置全局代理
+
+  #### **http代理**
+
+  ```bash
+  git config --global http.proxy socks5 127.0.0.1:10808
+  git config --global http.proxy 127.0.0.1:10809
+  ```
+
+  
+
+  **https代理**
+  
+  ```bash
+  git config --global https.proxy socks5 127.0.0.1:10808
+  git config --global https.proxy  127.0.0.1:10809
+  ```
+  
+  **查看所有配置**
+  
+  ```bash
+  git config --global --list
+  git config --global --get-all http.proxy
+  ```
+  
+  
+  
+  **重新设置**
+  
+  ```bash
+  git config --global --replace-all http.proxy 127.0.0.1:10808
+  ```
+  
+  **清除配置**
+  
+  ```bash
+  git config --global --unset http.proxy
+  ```
+  
+  **提示有多个配置时**
+  
+  ```bash
+  git config --global --unset-all http.proxy
+  ```
+  
+  
+  
+  
+
