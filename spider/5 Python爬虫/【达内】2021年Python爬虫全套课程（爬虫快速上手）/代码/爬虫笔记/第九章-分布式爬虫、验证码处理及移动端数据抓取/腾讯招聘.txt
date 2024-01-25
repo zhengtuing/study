@@ -1,0 +1,11 @@
+一级页面JSON地址：
+https://careers.tencent.com/tencentcareer/api/post/Query?timestamp=1593656018369&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=&attrId=&keyword={}&pageIndex={}&pageSize=10&language=zh-cn&area=cn
+
+一级页面提取数据：每个职位的POSTID的值
+
+
+二级页面JSON地址：
+https://careers.tencent.com/tencentcareer/api/post/ByPostId?timestamp=1593656158948&postId={}&language=zh-cn
+
+二级页面提取数据：每个职位的具体的6个数据
+

@@ -1,0 +1,67 @@
+1、创建爬虫项目: scrapy startproject Guazi
+2、cd到项目文件夹: cd Guazi
+3、创建爬虫文件: scrapy genspider guazi www.guazi.com
+4、定义要抓取的数据结构 - items.py
+     import scrapy
+     class GuaziItem(scrapy.Item):
+          name = scrapy.Field()
+          price = scrapy.Field()
+          link = scrapy.Field()
+          ... ...
+5、爬虫文件解析提取数据 - guazi.py
+     import scrapy
+     from ..items import GuaziItem
+     class GuaziSpider(scrapy.Spider):
+         name = 'guazi'
+         allowed_domains = ['www.guazi.com']
+         start_urls = ['改为第一页的URL地址']
+
+         def parse(self, response):
+              解析提取数据
+              item = GuaziItem()
+              item['name'] = xxx
+              # 1. 数据交给管道文件处理的方法
+              yield item
+              # 2. 需要继续跟进的URL地址如何交给调度器入队列
+              yield scrapy.Request(url=url, callback=self.xxx)
+6、管道文件处理爬虫文件提取的数据 - pipelines.py
+     class GuaziPipeline(object):
+          def process_item(self, item, spider):
+                # 具体处理数据的代码
+                return item
+7、全局配置 - settings.py
+     ROBOTSTXT_OBEY = False
+     CONCURRENT_REQUESTS = 8
+     DOWNLOAD_DELAY = 1
+     COOKIES_ENABLED = False
+     DEFAULT_REQUEST_HEADERS = {'Cookie':'','User-Agent':''}
+     ITEM_PIPELINES = {'Guazi.pipelines.GuaziPipeline' : 300}
+8、运行爬虫 - run.py
+     # 在项目文件夹下创建 run.py
+     from scrapy import cmdline
+     cmdline.execute('scrapy crawl guazi'.split())
+
+
+
+终极简单总结：
+1、创建2个东西（爬虫项目和爬虫文件）
+2、items.py
+3、guazi.py
+4、pipelines.py
+5、settings.py
+6、run.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

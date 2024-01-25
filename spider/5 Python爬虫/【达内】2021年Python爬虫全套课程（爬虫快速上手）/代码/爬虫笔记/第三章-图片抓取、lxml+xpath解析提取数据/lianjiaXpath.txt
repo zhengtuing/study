@@ -1,0 +1,10 @@
+基准xpath： //li[@class="clear LOGVIEWDATA LOGCLICKDATA"]
+for循环依次遍历后：
+名称： .//div[@class="positionInfo"]/a[1]/text()
+区域:   .//div[@class="positionInfo"]/a[2]/text()
+
+3室1厅 | 88.8平米 | 西南 | 精装 | 低楼层(共32层) | 2015年建 | 板楼
+.//div[@class="houseInfo"]/text()
+
+总价： .//div[@class="totalPrice"]/span/text()
+单价：.//div[@class="unitPrice"]/span/text()
